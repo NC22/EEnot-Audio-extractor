@@ -1,0 +1,5 @@
+xml парсинг musiclist
+поиск по дирректориям всех дик файлов и выгрузка в общий список
+load from upper dirrectorys
+
+save only one package

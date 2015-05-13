@@ -1,0 +1,5 @@
+Music_1 BITMAP "Music.bmp"
+Folder_1 BITMAP "Folder.bmp"
+Play_1 BITMAP "Play.bmp"
+Pause_1 BITMAP "Pause.bmp"
+Document_1 BITMAP "Document.bmp"
