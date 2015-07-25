@@ -19,8 +19,9 @@ type
 
   TRawFile = Class(TInterfacedObject, IEgoFileManagerInterface)
     private 
-	LastError : string;
+	  LastError : string;
     BasePath : string;
+    Mid : string;
     
     PackageList : array of TRawPackage;
     FOnSaveItemEnd : TPackageWorkEvent;
@@ -37,6 +38,7 @@ type
     function getLastError : string;
     function PackagesCount : integer;
 
+    function GetManagerId : string;
     function GetPackagePath(pkey : integer) : string;
     function GetPackageInfo(pkey: integer; var info : TPackageInfo) : boolean;
     function GetPackageItemInfo(pkey, fkey: integer; var info : TAudioInfo) : boolean;
@@ -59,15 +61,18 @@ implementation
 Constructor TRawFile.Create;
 begin
     Inherited Create;
+    self._AddRef;
     SetLength(PackageList, 0);
 
 	  BasePath := '';
     LastError := '';
+    Mid := 'RAW';
 end;
 
 destructor TRawFile.Destroy;
 begin
-    unloadRaw;
+  unloadRaw;
+  self._Release;
 	inherited;
 end;
 
@@ -85,6 +90,11 @@ begin
 
     Len := EndPos - StartPos;
     Result := true;
+end;
+
+function TRawFile.GetManagerId : string;
+begin
+  Result := Mid;
 end;
 
 {Public functions}

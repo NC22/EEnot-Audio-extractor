@@ -38,6 +38,7 @@ type
     function getLastError : string;
     function PackagesCount : integer;
 
+    function GetManagerId : string;
     function GetPackagePath(pkey : integer) : string;
     function GetPackageInfo(pkey: integer; var info : TPackageInfo) : boolean;
     function GetPackageItemInfo(pkey, fkey: integer; var info : TAudioInfo) : boolean;
@@ -48,6 +49,8 @@ type
 
     procedure ExecEventSaveItemEnd(State: TPackageWorkInfo);
     procedure ExecEventSavePackagesEnd(State: TPackageWorkInfo);
+
+    Destructor  Destroy;
   end;
     
 implementation

@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 186
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'EEnot v0.5 - Ego Audio Extractor'
+  Caption = 'EEnot v0.6 - Ego Audio Extractor'
   ClientHeight = 476
   ClientWidth = 474
   Color = clBtnFace

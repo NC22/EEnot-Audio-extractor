@@ -54,6 +54,7 @@ type
     DicPath : string;
     DicStream : TStream;
    	SearchDir : string;
+    Mid : string;
 
 	  PackageList: TDicPackageList;
 
@@ -76,6 +77,7 @@ type
                                                
 	  function getLastError : string;
     function PackagesCount : integer;
+    function GetManagerId : string;
 
     function GetPackageInfo(pkey: integer; var info : TPackageInfo) : boolean;
 
@@ -100,6 +102,7 @@ implementation
 Constructor TDicFileManager.Create;
 begin
   Inherited Create;
+  self._AddRef;
 
   unknownType := $0006;
    // MediaPlayer := TMediaPlayer.Create(nil);
@@ -113,12 +116,19 @@ begin
     
 	SearchDir := '';
 	SetLength(PackageList, 0);
+  Mid := 'DIC';
 end;
 
 destructor TDicFileManager.Destroy;
 begin
 	UnloadDic;
+  self._Release;
 	inherited;
+end;
+
+function TDicFileManager.GetManagerId : string;
+begin
+  Result := Mid;
 end;
 
 {Private functions}
